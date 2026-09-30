@@ -16,6 +16,7 @@ at that point and no one tried to get around the block.
 | 1 | `curl -I https://asknarelle-4-sc1003.azurewebsites.net/` (HEAD) | Egress proxy returned `403 Forbidden` to `CONNECT`, so no tunnel was opened |
 | 2 | `curl -v https://asknarelle-4-sc1003.azurewebsites.net/robots.txt` (GET) | Same `403` at `CONNECT`. This request confirmed the proxy's reason text. |
 | 3 | Re-check at 2026-09-30 10:20:55 UTC: `curl -I https://asknarelle-4-sc1003.azurewebsites.net/` (HEAD) | Still `403 Forbidden` at `CONNECT`. The policy was unchanged, so testing stayed stopped. |
+| 4 | Re-check at 2026-09-30 10:38:49 UTC: `curl -I .../` (HEAD) | Still `403 Forbidden` at `CONNECT`. |
 
 Raw evidence (request 2, trimmed):
 
@@ -93,6 +94,6 @@ Any other issuer means the cert was intercepted and cannot be used as evidence.
 
 ## Rules followed
 
-Only 3 requests were attempted, and none reached the target. No login, device-flow
+Only 4 requests were attempted, and none reached the target. No login, device-flow
 completion, chat submission, fuzzing, brute force or load. The proxy denial was not
 circumvented.
